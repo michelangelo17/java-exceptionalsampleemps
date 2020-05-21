@@ -1,6 +1,5 @@
 package com.lambdaschool.sampleemps.services;
 
-import com.lambdaschool.sampleemps.exceptions.ResourceNotFoundException;
 import com.lambdaschool.sampleemps.models.Email;
 import com.lambdaschool.sampleemps.models.Employee;
 import com.lambdaschool.sampleemps.models.EmployeeTitles;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +29,10 @@ public class EmployeeServiceImpl
 
     @Override
     public Employee findEmployeeById(long id) throws
-            ResourceNotFoundException
+            EntityNotFoundException
     {
         return employeerepos.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee id " + id + " not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Employee id " + id + " not found"));
     }
 
     @Override
@@ -70,7 +70,7 @@ public class EmployeeServiceImpl
         if (employee.getEmployeeid() != 0)
         {
             Employee oldEmp = employeerepos.findById(employee.getEmployeeid())
-                .orElseThrow(() -> new ResourceNotFoundException("Employee " + employee.getEmployeeid() + " Not Found"));
+                .orElseThrow(() -> new EntityNotFoundException("Employee " + employee.getEmployeeid() + " Not Found"));
 
             // delete the job titles for the old employee we are replacing
             for (EmployeeTitles et : oldEmp.getJobnames())
@@ -90,7 +90,7 @@ public class EmployeeServiceImpl
             {
                 JobTitle newET = jtrepos.findById(et.getJobname()
                     .getJobtitleid())
-                    .orElseThrow(() -> new ResourceNotFoundException("JobTitle " + et.getJobname()
+                    .orElseThrow(() -> new EntityNotFoundException("JobTitle " + et.getJobname()
                         .getJobtitleid() + " Not Found"));
 
                 newEmployee.addJobTitle(newET,
@@ -127,7 +127,7 @@ public class EmployeeServiceImpl
         long employeeid)
     {
         Employee currentEmployee = employeerepos.findById(employeeid)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee " + employeeid + " Not Found"));
+            .orElseThrow(() -> new EntityNotFoundException("Employee " + employeeid + " Not Found"));
 
         if (employee.getName() != null)
         {
@@ -184,7 +184,7 @@ public class EmployeeServiceImpl
             employeerepos.deleteById(employeeid);
         } else
         {
-            throw new ResourceNotFoundException("Employee " + employeeid + " Not Found");
+            throw new EntityNotFoundException("Employee " + employeeid + " Not Found");
         }
     }
 
@@ -201,10 +201,10 @@ public class EmployeeServiceImpl
         long jobtitleid)
     {
         employeerepos.findById(employeeid)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee id " + employeeid + " not found!"));
+            .orElseThrow(() -> new EntityNotFoundException("Employee id " + employeeid + " not found!"));
 
         jtrepos.findById(jobtitleid)
-            .orElseThrow(() -> new ResourceNotFoundException("Job Title id " + jobtitleid + " not found!"));
+            .orElseThrow(() -> new EntityNotFoundException("Job Title id " + jobtitleid + " not found!"));
 
         if (employeerepos.checkEmpJobTitleCombo(employeeid,
             jobtitleid)
@@ -214,7 +214,7 @@ public class EmployeeServiceImpl
                 jobtitleid);
         } else
         {
-            throw new ResourceNotFoundException("Employee and Job Title Combination Does Not Exists");
+            throw new EntityNotFoundException("Employee and Job Title Combination Does Not Exists");
         }
     }
 
@@ -226,10 +226,10 @@ public class EmployeeServiceImpl
         String manager)
     {
         employeerepos.findById(employeeid)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee id " + employeeid + " not found!"));
+            .orElseThrow(() -> new EntityNotFoundException("Employee id " + employeeid + " not found!"));
 
         jtrepos.findById(jobtitleid)
-            .orElseThrow(() -> new ResourceNotFoundException("Job Title id " + jobtitleid + " not found!"));
+            .orElseThrow(() -> new EntityNotFoundException("Job Title id " + jobtitleid + " not found!"));
 
         if (employeerepos.checkEmpJobTitleCombo(employeeid,
             jobtitleid)

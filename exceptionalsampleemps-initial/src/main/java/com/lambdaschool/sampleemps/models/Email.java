@@ -2,15 +2,8 @@ package com.lambdaschool.sampleemps.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 @Entity
 @Table(name = "emails")
 public class Email extends Auditable
@@ -19,7 +12,6 @@ public class Email extends Auditable
     @GeneratedValue(strategy = GenerationType.AUTO) // We will let the database decide how to generate it
     private long emailid; // long so we can have many rows
 
-    @javax.validation.constraints.Email
     @Column(nullable = false)
     private String email;
 

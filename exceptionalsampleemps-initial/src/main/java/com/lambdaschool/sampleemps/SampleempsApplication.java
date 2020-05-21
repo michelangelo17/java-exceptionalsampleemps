@@ -8,18 +8,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @SpringBootApplication
 public class SampleempsApplication
 {
+
     public static void main(String[] args)
     {
-        try
-        {
-            System.out.println(System.getenv("PATH").toUpperCase());
-        } catch (Exception e)
-        {
-            System.out.println("No Such Environment Variable");
-        } finally
-        {
-            SpringApplication.run(SampleempsApplication.class,
-                    args);
-        }
+        SpringApplication.run(SampleempsApplication.class,
+            args);
     }
+
 }

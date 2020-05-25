@@ -12,7 +12,7 @@ public class SampleempsApplication
     {
         try
         {
-            System.out.println(System.getenv("PATH").toUpperCase());
+            System.out.println(System.getenv("LAMBDA").toUpperCase());
         } catch (Exception e)
         {
             System.out.println("No Such Environment Variable");

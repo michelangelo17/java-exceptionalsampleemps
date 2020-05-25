@@ -28,8 +28,8 @@ public class Employee extends Auditable
     @Transient
     public boolean hasvalueforsalary = false;
 
-    @DecimalMax(value = "120000.0")
-    @DecimalMin(value = "100000.0")
+    // @DecimalMax(value = "120000.0")
+    // @DecimalMin(value = "100000.0")
     private double salary;
 
     /*

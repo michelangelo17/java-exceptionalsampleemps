@@ -1,4 +1,4 @@
-# Java Swagger Sample Employee Data
+# Java Exception Sample Employee Data
 
 ## Introduction
 

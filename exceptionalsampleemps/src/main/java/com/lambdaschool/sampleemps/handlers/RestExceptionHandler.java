@@ -27,7 +27,7 @@ public class RestExceptionHandler
         extends ResponseEntityExceptionHandler
 {
     @Autowired
-    private HelperFunctions helper;
+    private HelperFunctionsImpl helper;
 
     /**
      * The constructor for the RestExceptionHandler. Currently we do not do anything special. We just call the parent constructor.

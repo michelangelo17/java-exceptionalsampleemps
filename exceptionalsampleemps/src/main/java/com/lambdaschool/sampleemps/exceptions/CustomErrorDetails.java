@@ -1,6 +1,6 @@
 package com.lambdaschool.sampleemps.exceptions;
 
-import com.lambdaschool.sampleemps.handlers.HelperFunctions;
+import com.lambdaschool.sampleemps.handlers.HelperFunctionsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.stereotype.Component;
@@ -14,7 +14,7 @@ public class CustomErrorDetails
         extends DefaultErrorAttributes
 {
     @Autowired
-    private HelperFunctions helper;
+    private HelperFunctionsImpl helper;
 
     @Override
     public Map<String, Object> getErrorAttributes(

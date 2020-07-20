@@ -110,48 +110,11 @@ public class EmployeeController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/employee/{employeeid}")
-    public ResponseEntity<?> deleteEmployeeById(
-        @PathVariable
-            long employeeid)
-    {
-        employeeService.delete(employeeid);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
     @GetMapping(value = "/job/counts")
     public ResponseEntity<?> getEmpJobCounts()
     {
         List<EmpNameCountJobs> myEmployees = employeeService.getEmpNameCountJobs();
         return new ResponseEntity<>(myEmployees,
             HttpStatus.OK);
-    }
-
-    @DeleteMapping(value = "/employee/{employeeid}/jobtitle/{jobtitleid}")
-    public ResponseEntity<?> deleteEmployeeJobTitlesByid(
-        @PathVariable
-            long employeeid,
-        @PathVariable
-            long jobtitleid)
-    {
-        employeeService.deleteEmpJobTitle(employeeid,
-        jobtitleid);
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/employee/{employeeid}/jobtitle/{jobtitleid}/manager/{manager}")
-    public ResponseEntity<?> addEmployeeJobTitlesByid(
-        @PathVariable
-            long employeeid,
-        @PathVariable
-            long jobtitleid,
-        @PathVariable
-            String manager)
-    {
-        employeeService.addEmpJobTitle(employeeid,
-            jobtitleid, manager);
-
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

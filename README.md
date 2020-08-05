@@ -1,6 +1,5 @@
 # Java Exception Sample Employee Data
 
-
 ## Introduction
 
 This project is used to introduce custom exception handling to Java Spring REST API CRUD applications. As such it is a small application showing just the code that is needed to explain the topic.
